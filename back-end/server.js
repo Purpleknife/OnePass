@@ -1,6 +1,7 @@
 // load .env data into process.env
 require('dotenv').config();
 
+const db = require('./db/connection');
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
@@ -17,18 +18,16 @@ app.use(bodyParser.json());
 
 app.use(cookieSession({
   name: 'session',
-  keys: ['key1']
+  keys: ['heresakey']
 }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
 
 // Routes
-
-
-// Mount all ressource routes
+const userRoutes = require('./routes/users');
+app.use('/', userRoutes(db));
 
 
 app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
   console.log(`Express is be listening on port ${PORT}!`);
 });
