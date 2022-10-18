@@ -1,0 +1,15 @@
+{
+  "name": "express-back-end",
+  "version": "1.0.0",
+  "description": "Express backend in an Express-React project",
+  "main": "server.js",
+  "scripts": {
+    "go": "nodemon server.js",
+    "db:reset": "node bin/resetDb.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "nodemon": "^1.18.7"
+  }
+}
