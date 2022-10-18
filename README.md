@@ -5,6 +5,6 @@ Password Manager is a simple app that helps you generate passwords and store the
 This project's goals are:
 - Learn how to `salt` passwords.
 - Learn how to store passwords securely.
-- Develop my skills in React.
+- Develop my skills in React (React Router, React Cookie, React Context).
 
 To reset the database: `npm run db:reset`.
