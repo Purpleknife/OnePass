@@ -8,6 +8,7 @@
     "bootstrap": "^5.2.2",
     "react": "^16.8.6",
     "react-bootstrap": "^2.5.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^16.8.6",
     "react-router-dom": "^6.4.2",
     "react-scripts": "2.1.8"
