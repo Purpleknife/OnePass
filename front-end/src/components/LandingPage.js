@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const LandingPage = () => {
+import Button from 'react-bootstrap/Button';
+
+import Register from './Register';
+import './LandingPage.scss';
+
+const LandingPage = (props) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
-    <div>
+    <div className='test'>
       Hi from Landing Page!
+
+      <Button variant="primary" onClick={handleShow}>
+        Register
+      </Button>
+      <Register user={props.user} setUser={props.setUser} handleClose={handleClose} show={show}/>
     </div>
   );
 }
