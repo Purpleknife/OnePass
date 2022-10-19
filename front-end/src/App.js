@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 const App = () => {
   const [user, setUser] = useState();
 
