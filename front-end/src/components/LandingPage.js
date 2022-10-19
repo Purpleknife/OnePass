@@ -14,8 +14,8 @@ const LandingPage = (props) => {
   return (
     <div className='test'>
       Hi from Landing Page!
-
-      <Button variant="primary" onClick={handleShow}>
+      <br />
+      <Button className='register' onClick={handleShow}>
         Register
       </Button>
       <Register user={props.user} setUser={props.setUser} handleClose={handleClose} show={show}/>

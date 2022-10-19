@@ -1,4 +1,10 @@
+@import "~bootstrap/scss/bootstrap";
 
-.test {
-  color: green;
+.register {
+  background-color: rgb(112, 206, 112);
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
 }

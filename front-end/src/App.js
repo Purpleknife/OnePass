@@ -5,8 +5,6 @@ import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-
 const App = () => {
   const [user, setUser] = useState();
 
@@ -15,7 +13,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LandingPage user={user} setUser={setUser}/>} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard' element={<Dashboard user={user}/>} />
         </Routes>      
       </BrowserRouter>
     </React.StrictMode>
