@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
+
+const salt = bcrypt.genSaltSync(10);
 
 const Register = (props) => {
   const [firstName, setFirstName] = useState();
@@ -11,8 +17,26 @@ const Register = (props) => {
   const [password, setPassword] = useState();
   const [passwordConfirmation, setPasswordConfirmation] = useState();
 
-  const handleSubmit = (event) => {
+  const navigate = useNavigate();
+
+  const handleSubmit = async(event) => {
     event.preventDefault();
+
+    // await axios.post('/users', {
+    //   first_name: firstName,
+    //   last_name: lastName,
+    //   email: email,
+    //   password: bcrypt.hashSync(password, salt), //=> BCRYPT
+    //   password_confirmation: bcrypt.hashSync(passwordConfirmation, salt)
+    // })
+    //   .then(res => {
+    //     console.log('register res.data[0]', res.data[0]);
+    //     //props.setUser(res.data[0]);
+    //     //navigate('/dashboard');
+    //   })
+    //   .catch((error) => {
+    //     console.log(error.message);
+    //   })
   }
 
   return (
@@ -40,7 +64,6 @@ const Register = (props) => {
               <Form.Control
                 type="last_name"
                 name='last_name'
-                autoFocus
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
               />
@@ -52,7 +75,6 @@ const Register = (props) => {
                 type="email"
                 name='email'
                 placeholder="name@example.com"
-                autoFocus
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -66,9 +88,8 @@ const Register = (props) => {
               <Form.Control
                 type="password"
                 name='password'
-                autoFocus
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPassword(bcrypt.hashSync(e.target.value, salt))}
               />
             </Form.Group>
 
@@ -80,9 +101,8 @@ const Register = (props) => {
               <Form.Control
                 type="password"
                 name='password'
-                autoFocus
                 value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(e.target.value)}
+                onChange={(e) => setPasswordConfirmation(bcrypt.hashSync(e.target.value, salt))}
               />
             </Form.Group>
 
