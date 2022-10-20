@@ -31,7 +31,7 @@ const Login = (props) => {
 
         const fetchUser = allUsers.find((user) => user.email === email);
           if (fetchUser) {
-            if (bcrypt.compare(password, fetchUser.password)) {
+            if (bcrypt.compareSync(password, fetchUser.password)) {
               const user_id = fetchUser.id;
 
               axios.get(`/login/${user_id}`)
@@ -43,12 +43,16 @@ const Login = (props) => {
                   setCookie('user_session', res.data.token, {path: '/'});
                   navigate(`/dashboard/${user_id}`);
                 })
+                .catch(error => console.log(error.message));
+            } else {
+              alert('Wrong password!');
             }
           }
+          if (!fetchUser) {
+            alert('Please register!');
+          }
       })
-
-
-
+      .catch(error => console.log(error.message));
   };
   
   
