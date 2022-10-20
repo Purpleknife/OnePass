@@ -72,7 +72,7 @@ const Register = (props) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Label>First name:</Form.Label>
               <Form.Control
                 type="first_name"
@@ -81,7 +81,7 @@ const Register = (props) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label>Last name</Form.Label>
               <Form.Control
                 type="last_name"
@@ -90,7 +90,7 @@ const Register = (props) => {
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput4">
               <Form.Label>Email address:</Form.Label>
               <Form.Control
                 type="email"

@@ -3,22 +3,33 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import Register from './Register';
+import Login from './Login';
+
 import './LandingPage.scss';
 
 const LandingPage = (props) => {
-  const [show, setShow] = useState(false);
+  const [showRegister, setShowRegister] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleRegisterClose = () => setShowRegister(false);
+  const handleRegisterShow = () => setShowRegister(true);
 
+  const handleLoginClose = () => setShowLogin(false);
+  const handleLoginShow = () => setShowLogin(true);
+  
   return (
     <div className='test'>
       Hi from Landing Page!
       <br />
-      <Button className='register' onClick={handleShow}>
+      <Button className='login' onClick={handleLoginShow}>
+        Login
+      </Button>
+      <Login user={props.user} setUser={props.setUser} handleClose={handleLoginClose} show={showLogin}/>
+      &nbsp;
+      <Button className='register' onClick={handleRegisterShow}>
         Register
       </Button>
-      <Register user={props.user} setUser={props.setUser} handleClose={handleClose} show={show}/>
+      <Register user={props.user} setUser={props.setUser} handleClose={handleRegisterClose} show={showRegister}/>
     </div>
   );
 }
