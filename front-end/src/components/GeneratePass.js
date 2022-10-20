@@ -13,15 +13,19 @@ const GeneratePass = () => {
   const handleOnChange = (condition) => {
     if (condition === 'lowercase') {
       setLowercaseIsChecked(!lowercaseIsChecked);
+      console.log('lowercase checked!!');
     }
     if (condition === 'uppercase') {
       setUppercaseIsChecked(!uppercaseIsChecked);
+      console.log('uppercase checked!!');
     }
     if (condition === 'symbols') {
       setSymbolsIsChecked(!symbolsIsChecked);
+      console.log('symbols checked!!');
     }
     if (condition === 'numbers') {
       setNumbersIsChecked(!numbersIsChecked);
+      console.log('numbers checked!!');
     }
   };
 
@@ -49,7 +53,7 @@ const GeneratePass = () => {
           id="lowercase"
           name="lowercase" 
           checked={lowercaseIsChecked}
-          onChange={handleOnChange(lowercase)}
+          onChange={() => handleOnChange('lowercase')}
           value="Lowercase" /> Lowercase
         </span>
         <span><input 
@@ -57,7 +61,7 @@ const GeneratePass = () => {
           id="uppercase"
           name="uppercase"
           checked={uppercaseIsChecked}
-          onChange={handleOnChange(uppercase)}
+          onChange={() => handleOnChange("uppercase")}
           value="Uppercase" /> Uppercase
         </span>
         <span><input 
@@ -65,7 +69,7 @@ const GeneratePass = () => {
           id="symbol" 
           name="symbol"
           checked={symbolsIsChecked}
-          onChange={handleOnChange(symbols)}
+          onChange={() => handleOnChange('symbols')}
           value="Symbols" /> Symbols
         </span>
         <span><input 
@@ -73,7 +77,7 @@ const GeneratePass = () => {
           id="numbers" 
           name="numbers"
           checked={numbersIsChecked}
-          onChange={handleOnChange(numbers)} 
+          onChange={() => handleOnChange('numbers')} 
           value="Numbers" /> Numbers
         </span>
       </div>
