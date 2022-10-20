@@ -1,21 +1,41 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 import axios from 'axios';
+import { useNavigate, Navigate } from 'react-router-dom';
 
 const Dashboard = (props) => {
+  //const [passwords, setPasswords] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const username = cookies.username;
+  const user_id = cookies.user_id;
+  const loggedIn = cookies.loggedIn;
+  console.log('loggedIn', loggedIn);
+
+  const navigate = useNavigate();
 
   const fetchDashboard = async(e) => {
-    await axios.get(`/dashboard/${props.user.id}`)
+    await axios.get(`/dashboard/${user_id}`)
       .then(res => {
         console.log('Get Dashboard data');
+        //setPasswords(res.data);
       })
       .catch(error => {
         console.log(error.message);
       });
   };
+
+  const logout = () => {
+    axios.get('/logout')
+      .then(data => {
+        props.setUser(null);
+        removeCookie('username', {path: '/'});
+        removeCookie('user_id', {path: '/'});
+        removeCookie('loggedIn', {path: '/'});
+        removeCookie('user_session', {path: '/'});
+        navigate('/');
+      })
+  }
 
   useEffect(() => {
     fetchDashboard();
@@ -23,8 +43,15 @@ const Dashboard = (props) => {
 
   return (
     <div>
-      Hi from Dashboard!
-      Hi, {username}!
+      { !loggedIn 
+      ? <Navigate to="/" />
+      : <div> 
+        Hi from Dashboard!
+        Hi, {username}!
+        <br />
+        <button type='submit' onClick={logout}>Logout</button>
+      </div>
+      }
     </div>
   );
 }

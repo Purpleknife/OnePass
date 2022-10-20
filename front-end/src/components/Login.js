@@ -39,6 +39,7 @@ const Login = (props) => {
                   console.log('login data', res.data);
                   props.setUser(res.data.userData);
                   setCookie('username', res.data.userData.username, {path: '/'});
+                  setCookie('user_id', res.data.userData.id, {path: '/'});
                   setCookie('loggedIn', 'yes', {path: '/'});
                   setCookie('user_session', res.data.token, {path: '/'});
                   navigate(`/dashboard/${user_id}`);
