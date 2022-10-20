@@ -42,7 +42,8 @@ const Register = (props) => {
         console.log('register res.data', res.data);
         props.setUser(res.data);
         setCookie('user_id', res.data.id, {path: '/'});
-        //setCookie('last_name', lastNameInput.current.value, {path: '/'});
+        setCookie('first_name', res.data.first_name, {path: '/'});
+        setCookie('last_name', res.data.last_name, {path: '/'});
         navigate('/dashboard');
       })
       .catch((error) => {
