@@ -42,12 +42,16 @@ const Register = (props) => {
     })
       .then(res => {
         console.log('res.data.userData', res.data.userData);
-        props.setUser(res.data.userData);
-        setCookie('username', res.data.userData.username, {path: '/'});
-        setCookie('user_session', res.data.token, {path: '/'});
-        setCookie('loggedIn', 'yes', {path: '/'});
-        const user_id = res.data.userData.id;
-        navigate(`/dashboard/${user_id}`);
+        if (res.data.userData.email === emailInput.current.value) {
+          alert('This email adress is already registered!');
+        } else {
+          props.setUser(res.data.userData);
+          setCookie('username', res.data.userData.username, {path: '/'});
+          setCookie('user_session', res.data.token, {path: '/'});
+          setCookie('loggedIn', 'yes', {path: '/'});
+          const user_id = res.data.userData.id;
+          navigate(`/dashboard/${user_id}`);
+        }
       })
       .catch((error) => {
         console.log(error.message);
