@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 
 import './GeneratePass.scss';
 
 const GeneratePass = () => {
+  const [length, setLength] = useState(0);
+
+  const increaseLength = () => {
+    setLength(prev => prev + 1);
+  };
+
+  const decreaseLength = () => {
+    setLength(prev => prev - 1);
+  };
+
+  
+
   return (
     <div className='generate_form'>
       <div className='title'>
@@ -11,7 +24,7 @@ const GeneratePass = () => {
       </div>
       
       <div className='options'>
-        <span>Length: <i class="fa-solid fa-square-minus"></i> 0 <i class="fa-solid fa-square-plus"></i></span>
+        <span>Length: <i onClick={decreaseLength} className="fa-solid fa-square-minus"></i> {length} <i onClick={increaseLength} className="fa-solid fa-square-plus"></i></span>
         <span><input type="checkbox" id="lowercase" name="lowercase" value="Lowercase" /> Lowercase</span>
         <span><input type="checkbox" id="uppercase" name="uppercase" value="Uppercase" /> Uppercase</span>
         <span><input type="checkbox" id="symbol" name="symbol" value="Symbols" /> Symbols</span>
