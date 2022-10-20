@@ -8,9 +8,11 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
-
+import { useCookies } from 'react-cookie';
 
 const Register = (props) => {
+  const [cookies, setCookie] = useCookies(['user']);
+
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
@@ -37,8 +39,10 @@ const Register = (props) => {
       password_confirmation: saltedPasswordConfirmation
     })
       .then(res => {
-        console.log('register res.data[0]', res.data);
+        console.log('register res.data', res.data);
         props.setUser(res.data);
+        setCookie('user_id', res.data.id, {path: '/'});
+        //setCookie('last_name', lastNameInput.current.value, {path: '/'});
         navigate('/dashboard');
       })
       .catch((error) => {
@@ -47,6 +51,7 @@ const Register = (props) => {
   }
 
   console.log('user register', props.user);
+  console.log('cookies user', cookies.first_name);
 
   return (
     <>
