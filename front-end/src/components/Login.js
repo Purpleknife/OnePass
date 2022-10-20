@@ -1,10 +1,57 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef } from 'react';
+
+import { useCookies } from 'react-cookie';
+
+import { useNavigate } from 'react-router';
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
+import axios from 'axios';
+import bcrypt from 'bcryptjs';
+
 const Login = (props) => {
+  const [cookies, setCookie] = useCookies(['user']);
+
+  const emailInput = useRef();
+  const passwordInput = useRef();
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async(event) => {
+    event.preventDefault();
+
+    const email = emailInput.current.value;
+    const password = passwordInput.current.value;
+
+    axios.get('/users')
+      .then(res => {
+        const allUsers = res.data;
+
+        const fetchUser = allUsers.find((user) => user.email === email);
+          if (fetchUser) {
+            if (bcrypt.compare(password, fetchUser.password)) {
+              const user_id = fetchUser.id;
+
+              axios.get(`/login/${user_id}`)
+                .then((res) => {
+                  console.log('login data', res.data);
+                  props.setUser(res.data.userData);
+                  setCookie('username', res.data.userData.username, {path: '/'});
+                  setCookie('loggedIn', 'yes', {path: '/'});
+                  setCookie('user_session', res.data.token, {path: '/'});
+                  navigate(`/dashboard/${user_id}`);
+                })
+            }
+          }
+      })
+
+
+
+  };
+  
+  
   return (
     <>
 
@@ -22,7 +69,7 @@ const Login = (props) => {
                 name='email'
                 autoFocus
                 placeholder="name@example.com"
-                //ref={emailInput}
+                ref={emailInput}
               />
             </Form.Group>
 
@@ -34,14 +81,14 @@ const Login = (props) => {
               <Form.Control
                 type="password"
                 name='password'
-                //ref={passwordInput}
+                ref={passwordInput}
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
 
-          <Button variant="dark" >
+          <Button variant="dark" onClick={handleSubmit}>
             Login
           </Button>
         </Modal.Footer>

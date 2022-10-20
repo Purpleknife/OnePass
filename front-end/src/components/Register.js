@@ -44,6 +44,7 @@ const Register = (props) => {
         console.log('res.data.userData', res.data.userData);
         props.setUser(res.data.userData);
         setCookie('username', res.data.userData.username, {path: '/'});
+        setCookie('user_session', res.data.token, {path: '/'});
         setCookie('loggedIn', 'yes', {path: '/'});
         const user_id = res.data.userData.id;
         navigate(`/dashboard/${user_id}`);

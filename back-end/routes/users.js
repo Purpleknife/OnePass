@@ -53,15 +53,17 @@ module.exports = (db) => {
 
   // Route to login users:
   router.get('/login/:id', (req, res) => {
-    const id = req.session.user_id || req.params.id;
+    const id = req.params.id;
 
     const queryParams = [id];
     const queryString = `SELECT * FROM users WHERE users.id = $1;`;
 
     db.query(queryString, queryParams)
       .then(data => {
-        //req.session.user_id = data.rows[0].id;
-        res.json(data.rows);
+        const token = jwt.sign({id: id}, secret_token, { expiresIn: '1800s' } );
+        const userData = data.rows[0];
+
+        res.json({token, userData});
       })
       .catch(error => {
         console.log(error.message);
