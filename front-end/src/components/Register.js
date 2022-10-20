@@ -13,6 +13,7 @@ import { useCookies } from 'react-cookie';
 const Register = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
 
+  const usernameInput = useRef();
   const firstNameInput = useRef();
   const lastNameInput = useRef();
   const emailInput = useRef();
@@ -32,6 +33,7 @@ const Register = (props) => {
     const saltedPasswordConfirmation = bcrypt.hashSync(passwordConfirmation, salt);
 
     await axios.post('/users', {
+      username: usernameInput.current.value,
       first_name: firstNameInput.current.value,
       last_name: lastNameInput.current.value,
       email: emailInput.current.value,
@@ -39,10 +41,11 @@ const Register = (props) => {
       password_confirmation: saltedPasswordConfirmation
     })
       .then(res => {
+        console.log('res.data.userData', res.data.userData);
         props.setUser(res.data.userData);
         setCookie('first_name', res.data.userData.first_name, {path: '/'});
         setCookie('last_name', res.data.userData.last_name, {path: '/'});
-        setCookie('user_id', res.data.userData.id, {path: '/'});
+        setCookie('loggedIn', 'yes', {path: '/'});
         const user_id = res.data.userData.id;
         navigate(`/dashboard/${user_id}`);
       })
@@ -60,12 +63,21 @@ const Register = (props) => {
         </Modal.Header>
         <Modal.Body>
           <Form>
-          <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                type="username"
+                name='username'
+                autoFocus
+                ref={usernameInput}
+              />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>First name:</Form.Label>
               <Form.Control
                 type="first_name"
                 name='first_name'
-                autoFocus
                 ref={firstNameInput}
               />
             </Form.Group>

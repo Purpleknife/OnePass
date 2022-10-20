@@ -9,10 +9,12 @@ const Dashboard = (props) => {
   const last_name = cookies.last_name;
   const user_id = cookies.user_id;
 
-  console.log('user from Dash', user_id);
+  console.log('user from Dash', props.user);
+
+  //window.location.reload(false);
 
   const fetchDashboard = async(e) => {
-    await axios.get(`/dashboard/${user_id}`)
+    await axios.get(`/dashboard/${props.user.id}`)
       .then(res => {
         console.log('Get Dashboard data');
       })

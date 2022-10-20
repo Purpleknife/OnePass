@@ -9,16 +9,17 @@ module.exports = (db) => {
 
   // Route to register users:
   router.post('/users', (req, res) => {
+    const username = req.body.username;
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const email = req.body.email;
     const password = req.body.password;
     const password_confirmation = req.body.password_confirmation;
 
-    const queryParams = [first_name, last_name, email, password, password_confirmation];
+    const queryParams = [username, first_name, last_name, email, password, password_confirmation];
     const queryString = `
-    INSERT INTO users (first_name, last_name, email, password, password_confirmation)
-    VALUES ($1, $2, $3, $4, $5)
+    INSERT INTO users (username, first_name, last_name, email, password, password_confirmation)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
     `;
 
