@@ -1,6 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const router  = express.Router();
 const jwt = require('jsonwebtoken');
+const secret_token = process.env.SECRET_TOKEN;
 
 module.exports = (db) => {
 
@@ -21,8 +24,11 @@ module.exports = (db) => {
 
     db.query(queryString, queryParams)
       .then(data => {
-        res.json(data.rows[0]);
-        console.log('data.rows[0] =====>', data.rows[0]);
+        const token = jwt.sign({email: email}, secret_token, { expiresIn: '1800s' } );
+        const userData = data.rows[0];
+
+        //console.log('OBJECT SENT ===> ', {token, userData});
+        res.json({token, userData});
       })
       .catch(error => {
         console.log(error.message);

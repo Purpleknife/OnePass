@@ -39,13 +39,11 @@ const Register = (props) => {
       password_confirmation: saltedPasswordConfirmation
     })
       .then(res => {
-        console.log('register res.data', res.data);
-        console.log('token', res.data.token);
-        props.setUser(res.data);
-        setCookie('user_id', res.data.id, {path: '/'});
-        setCookie('first_name', res.data.first_name, {path: '/'});
-        setCookie('last_name', res.data.last_name, {path: '/'});
-        window.location.reload();
+        props.setUser(res.data.userData);
+        setCookie('token', res.data.token, {path: '/'});
+        setCookie('first_name', res.data.userData.first_name, {path: '/'});
+        setCookie('last_name', res.data.userData.last_name, {path: '/'});
+        // //window.location.reload();
         navigate('/dashboard');
       })
       .catch((error) => {
@@ -53,8 +51,8 @@ const Register = (props) => {
       })
   }
 
-  console.log('user register', props.user);
-  console.log('cookies user', cookies.first_name);
+  // console.log('user register', props.user);
+  // console.log('cookies user', cookies.first_name);
 
   return (
     <>

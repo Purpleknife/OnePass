@@ -9,7 +9,7 @@ import Dashboard from './components/Dashboard';
 const App = () => {
   const [user, setUser] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-  const loggedIn = cookies.user_id;
+  const loggedIn = cookies.token;
   console.log('loggedIn', loggedIn);
 
   return (
