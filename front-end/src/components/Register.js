@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from 'react-bootstrap/Button';
@@ -8,36 +8,45 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
-const salt = bcrypt.genSaltSync(10);
+
 
 const Register = (props) => {
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [passwordConfirmation, setPasswordConfirmation] = useState();
+  const firstNameInput = useRef();
+  const lastNameInput = useRef();
+  const emailInput = useRef();
+  const passwordInput = useRef();
+  const passwordConfirmationInput = useRef();
 
   const navigate = useNavigate();
+  const salt = bcrypt.genSaltSync(10);
 
   const handleSubmit = async(event) => {
     event.preventDefault();
 
-    // await axios.post('/users', {
-    //   first_name: firstName,
-    //   last_name: lastName,
-    //   email: email,
-    //   password: bcrypt.hashSync(password, salt), //=> BCRYPT
-    //   password_confirmation: bcrypt.hashSync(passwordConfirmation, salt)
-    // })
-    //   .then(res => {
-    //     console.log('register res.data[0]', res.data[0]);
-    //     //props.setUser(res.data[0]);
-    //     //navigate('/dashboard');
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.message);
-    //   })
+    const password = passwordInput.current.value;
+    const saltedPassword = bcrypt.hashSync(password, salt);
+
+    const passwordConfirmation = passwordConfirmationInput.current.value;
+    const saltedPasswordConfirmation = bcrypt.hashSync(passwordConfirmation, salt);
+
+    await axios.post('/users', {
+      first_name: firstNameInput.current.value,
+      last_name: lastNameInput.current.value,
+      email: emailInput.current.value,
+      password: saltedPassword, //=> BCRYPT
+      password_confirmation: saltedPasswordConfirmation
+    })
+      .then(res => {
+        console.log('register res.data[0]', res.data);
+        props.setUser(res.data);
+        navigate('/dashboard');
+      })
+      .catch((error) => {
+        console.log(error.message);
+      })
   }
+
+  console.log('user register', props.user);
 
   return (
     <>
@@ -54,29 +63,26 @@ const Register = (props) => {
                 type="first_name"
                 name='first_name'
                 autoFocus
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                ref={firstNameInput}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput2">
               <Form.Label>Last name</Form.Label>
               <Form.Control
                 type="last_name"
                 name='last_name'
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                ref={lastNameInput}
               />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput3">
               <Form.Label>Email address:</Form.Label>
               <Form.Control
                 type="email"
                 name='email'
                 placeholder="name@example.com"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                ref={emailInput}
               />
             </Form.Group>
 
@@ -88,21 +94,19 @@ const Register = (props) => {
               <Form.Control
                 type="password"
                 name='password'
-                value={password}
-                onChange={(e) => setPassword(bcrypt.hashSync(e.target.value, salt))}
+                ref={passwordInput}
               />
             </Form.Group>
 
             <Form.Group
               className="mb-3"
-              controlId="exampleForm.ControlPassword1"
+              controlId="exampleForm.ControlPassword2"
             >
               <Form.Label>Password confirmation:</Form.Label>
               <Form.Control
                 type="password"
                 name='password'
-                value={passwordConfirmation}
-                onChange={(e) => setPasswordConfirmation(bcrypt.hashSync(e.target.value, salt))}
+                ref={passwordConfirmationInput}
               />
             </Form.Group>
 

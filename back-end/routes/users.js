@@ -20,7 +20,8 @@ module.exports = (db) => {
 
     db.query(queryString, queryParams)
       .then(data => {
-        res.json(data.rows);
+        res.json(data.rows[0]);
+        console.log('data.rows[0] =====>', data.rows[0]);
       })
       .catch(error => {
         console.log(error.message);
