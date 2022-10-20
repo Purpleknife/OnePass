@@ -5,9 +5,7 @@ import axios from 'axios';
 
 const Dashboard = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-  const first_name = cookies.first_name;
-  const last_name = cookies.last_name;
-  const user_id = cookies.user_id;
+  const username = cookies.username;
 
   console.log('user from Dash', props.user);
 
@@ -30,7 +28,7 @@ const Dashboard = (props) => {
   return (
     <div>
       Hi from Dashboard!
-      Hi, {first_name + ' ' + last_name}!
+      Hi, {username}!
     </div>
   );
 }
