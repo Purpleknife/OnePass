@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 
 import Register from './Register';
 import Login from './Login';
+import GeneratePass from './GeneratePass';
 
 import './LandingPage.scss';
 
@@ -16,10 +17,10 @@ const LandingPage = (props) => {
 
   const handleLoginClose = () => setShowLogin(false);
   const handleLoginShow = () => setShowLogin(true);
-  
+
   return (
     <div className='test'>
-      Hi from Landing Page!
+      <GeneratePass />
       <br />
       <Button className='login' onClick={handleLoginShow}>
         Login

@@ -1,0 +1,24 @@
+
+
+.generate_form {
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  width: 30%;
+  margin-top: 1em;
+  
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    float: left;
+  }
+
+  .generated_pass {
+    border: 1px solid black;
+  }
+}
