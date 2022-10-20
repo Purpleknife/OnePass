@@ -17,7 +17,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<LandingPage user={user} setUser={setUser}/>} />
-          {loggedIn && <Route path='/dashboard' element={<Dashboard user={user}/>} /> }
+          <Route path='/dashboard/:user_id' element={<Dashboard user={user}/>} />
         </Routes>      
       </BrowserRouter>
     </React.StrictMode>

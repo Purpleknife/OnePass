@@ -68,5 +68,25 @@ module.exports = (db) => {
   });
 
 
+  // Route to get the user's Dashboard:
+  router.get('/dashboard/:user_id', (req, res) => {
+    const user_id = req.params.user_id;
+
+    const queryParams = [user_id];
+    const queryString = `SELECT * FROM passwords WHERE user_id = $1;`
+
+    db.query(queryString, queryParams)
+      .then(data => {
+        console.log('dashboard', data.rows);
+        res.json(data.rows);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+
+  })
+
+
+
   return router;
 };
