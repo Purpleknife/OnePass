@@ -40,11 +40,9 @@ const Register = (props) => {
     })
       .then(res => {
         props.setUser(res.data.userData);
-        setCookie('token', res.data.token, {path: '/'});
         setCookie('first_name', res.data.userData.first_name, {path: '/'});
         setCookie('last_name', res.data.userData.last_name, {path: '/'});
         setCookie('user_id', res.data.userData.id, {path: '/'});
-        // //window.location.reload();
         const user_id = res.data.userData.id;
         navigate(`/dashboard/${user_id}`);
       })
@@ -52,9 +50,6 @@ const Register = (props) => {
         console.log(error.message);
       })
   }
-
-  // console.log('user register', props.user);
-  // console.log('cookies user', cookies.first_name);
 
   return (
     <>
