@@ -4,6 +4,7 @@ import './GeneratePass.scss';
 
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import Alert from 'react-bootstrap/Alert';
 
 import { generatePassword, shuffle } from '../helpers/helpers';
 
@@ -16,7 +17,8 @@ const GeneratePass = () => {
   const [password, setPassword] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
   const [copied, setCopied] = useState(false);
-
+  //const [showPass, setShowPass] = useState(false);
+  const [showError, setShowError] = useState('');
 
   //To show and hide password:
   const togglePassword = () => {
@@ -70,6 +72,9 @@ const GeneratePass = () => {
 
     let characters = '';
 
+    if (!length) {
+      setShowError('The length needs to be at least 1.');
+    }
     if (length) {
       if (lowercaseIsChecked) {
         characters += lowercase;
@@ -86,16 +91,15 @@ const GeneratePass = () => {
       if (!lowercaseIsChecked && !uppercaseIsChecked && !numbersIsChecked && !symbolsIsChecked) { //If nothing is checked, generate a password that has everything.
         characters = lowercase + uppercase + symbols + numbers;
       }
-    }
-    if (!length) {
-      alert('The length needs to be at least 1.')
-    }
+      
+      const shuffledChars = shuffle(characters); //So the order of the characters added is not always the same.
 
-    console.log('characters', characters);
+      setPassword(generatePassword(shuffledChars, length));
+      //setShowPass(!showPass);
+      setShowError('');
+    }
     
-    const shuffledChars = shuffle(characters); //So the order of the characters added is not always the same.
-    console.log('shuffledChars', shuffledChars);
-    setPassword(generatePassword(shuffledChars, length));
+
   }
   
 
@@ -105,6 +109,10 @@ const GeneratePass = () => {
         Generate your password <i className="fa-solid fa-key-skeleton"></i><br />
         Choose your prefered options then click on Generate.
       </div>
+
+      {showError && <Alert key='danger' variant='danger'>
+        {showError}
+      </Alert>}
       
       <div className='options'>
         <span>Length: <i onClick={decreaseLength} className="fa-solid fa-square-minus"></i> {length} <i onClick={increaseLength} className="fa-solid fa-square-plus"></i></span>
@@ -143,10 +151,12 @@ const GeneratePass = () => {
       </div>
 
       <button onClick={handleSubmit} className='generate_btn'>Generate</button>
+      
       <div className='generated_pass'>
         <input 
           defaultValue={password}
           type={!passwordShown ? 'text' : 'password'}
+          disabled
         />
         {!passwordShown ? <i onClick={togglePassword} className="fa-solid fa-eye-slash"></i> : <i onClick={togglePassword} className="fa-solid fa-eye"></i>}
 
@@ -163,6 +173,7 @@ const GeneratePass = () => {
           <i onClick={copy} className="fa-solid fa-copy"></i>
         </OverlayTrigger>
       </div>
+
     </div>
   );
 }
