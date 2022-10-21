@@ -6,6 +6,8 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import GeneratePass from './GeneratePass';
 import OneLogin from './OneLogin';
 
+import './Dashboard.scss';
+
 const Dashboard = (props) => {
   const [passwords, setPasswords] = useState();
   const [passList, setPassList] = useState();
@@ -37,7 +39,7 @@ const Dashboard = (props) => {
         <OneLogin
           key={pass.id}
           id={pass.id}
-          title={pass.id}
+          title={pass.title}
           content={pass.content}
           url={pass.url}
           date={pass.date_created}
@@ -87,8 +89,9 @@ const Dashboard = (props) => {
 
       <GeneratePass />
 
-      {passList}
-
+      <div className='container'>
+        {passList}
+      </div>
     </div>
   );
 }

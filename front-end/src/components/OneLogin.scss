@@ -1,0 +1,17 @@
+
+.container {
+  display: table;
+  flex-flow: row;
+  // justify-content: space-between;
+
+  .one_card {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    margin-top: 1em;
+  }
+
+}
