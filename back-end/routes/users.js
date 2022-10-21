@@ -97,32 +97,29 @@ module.exports = (db) => {
   });
 
 
-  //Route to fetch ALL passwords for a specific user:
-  
-
   //Route to add a user's password to the db:
-  router.post('/passwords/:user_id'), (req, res) => {
-    const user_id = req.params.user_id;
+  router.post('/dashboard/:user_id', (req, res) => {
+    const user_id = req.body.user_id;
     const title = req.body.title;
-    const URL = req.body.URL;
+    const url = req.body.url;
     const content = req.body.content;
     
-    const queryParams = [user_id, title, URL, content];
+    const queryParams = [user_id, title, url, content];
     const queryString = `
-    INSERT INTO passwords (user_id, title, URL, content, date_created)
-    VALUES ($1, $2, $3, $4, $5, CURRENT_DATE)
+    INSERT INTO passwords (user_id, title, url, content, date_created)
+    VALUES ($1, $2, $3, $4, CURRENT_DATE)
     RETURNING *;
     `;
 
     db.query(queryString, queryParams)
       .then(data => {
-        console.log('user passwords', data.rows[0]);
-        res.json(data.rows[0]);
+        console.log('user passwords', data.rows);
+        res.json(data.rows);
       })
       .catch(error => {
         console.log(error.message);
       });
-  };
+  });
 
   return router;
 };

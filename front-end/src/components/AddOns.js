@@ -11,11 +11,11 @@ const AddOns = (props) => {
   const URLInput = useRef();
 
   const save = async(event) => {
-    event.preventDefault();
 
-    await axios.post(`/passwords/${user_id}`, {
+    axios.post(`/dashboard/${user_id}`, {
+      user_id: cookies.user_id,
       title: titleInput.current.value,
-      URL: URLInput.current.value,
+      url: URLInput.current.value,
       content: props.password
     })
       .then((res) => {

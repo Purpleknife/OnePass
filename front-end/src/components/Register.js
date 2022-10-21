@@ -44,7 +44,8 @@ const Register = (props) => {
         console.log('res.data.userData', res.data.userData);
         if (res.data.userData.email === emailInput.current.value) {
           alert('This email adress is already registered!');
-        } else {
+        } 
+        if (res.data.userData.email !== emailInput.current.value) {
           props.setUser(res.data.userData);
           setCookie('username', res.data.userData.username, {path: '/'});
           setCookie('user_id', res.data.userData.id, {path: '/'});
