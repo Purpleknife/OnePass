@@ -10,7 +10,13 @@ const GeneratePass = () => {
   const [uppercaseIsChecked, setUppercaseIsChecked] = useState(false);
   const [symbolsIsChecked, setSymbolsIsChecked] = useState(false);
   const [numbersIsChecked, setNumbersIsChecked] = useState(false);
-  const [password, setPassword] = useState(null);
+  const [password, setPassword] = useState('');
+  const [passwordShown, setPasswordShown] = useState(false);
+
+  //To show and hide password:
+  const togglePassword = () => {
+    setPasswordShown(!passwordShown);
+  };
 
 
   //To set the password's length:
@@ -126,7 +132,13 @@ const GeneratePass = () => {
 
       <button onClick={handleSubmit} className='generate_btn'>Generate</button>
       <div className='generated_pass'>
-        {password} <i className="fa-solid fa-eye-slash"></i> <i className="fa-solid fa-eye"></i>
+        <input 
+          defaultValue={password}
+          type={!passwordShown ? 'text' : 'password'}
+        />
+        {!passwordShown ? <i onClick={togglePassword} className="fa-solid fa-eye-slash"></i> : <i onClick={togglePassword} className="fa-solid fa-eye"></i>}
+        
+        
       </div>
     </div>
   );
