@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-
 import './GeneratePass.scss';
+
+import { generatePassword, shuffle } from '../helpers/helpers';
 
 const GeneratePass = () => {
   const [length, setLength] = useState(0);
@@ -9,6 +10,7 @@ const GeneratePass = () => {
   const [uppercaseIsChecked, setUppercaseIsChecked] = useState(false);
   const [symbolsIsChecked, setSymbolsIsChecked] = useState(false);
   const [numbersIsChecked, setNumbersIsChecked] = useState(false);
+  const [password, setPassword] = useState(null);
 
 
   //To set the password's length:
@@ -41,12 +43,48 @@ const GeneratePass = () => {
     }
   };
 
+  // Handle generating the password:
+  const handleSubmit = () => {
+    const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+    const numbers = '0123456789';
+    const symbols = '@#$%&*-';
+
+    let characters = '';
+
+    if (length) {
+      if (lowercaseIsChecked) {
+        characters += lowercase;
+      }
+      if (uppercaseIsChecked) {
+        characters += uppercase;
+      }
+      if (numbersIsChecked) {
+        characters += numbers;
+      }
+      if (symbolsIsChecked) {
+        characters += symbols;
+      }
+      if (!lowercaseIsChecked && !uppercaseIsChecked && !numbersIsChecked && !symbolsIsChecked) { //If nothing is checked, generate a password that has everything.
+        characters = lowercase + uppercase + symbols + numbers;
+      }
+    }
+    if (!length) {
+      alert('The length needs to be at least 1.')
+    }
+
+    console.log('characters', characters);
+    
+    const shuffledChars = shuffle(characters); //So the order of the characters added is not always the same.
+    console.log('shuffledChars', shuffledChars);
+    setPassword(generatePassword(shuffledChars, length));
+  }
   
 
   return (
     <div className='generate_form'>
       <div className='title'>
-        Generate your password <i class="fa-solid fa-key-skeleton"></i><br />
+        Generate your password <i className="fa-solid fa-key-skeleton"></i><br />
         Choose your prefered options then click on Generate.
       </div>
       
@@ -86,9 +124,9 @@ const GeneratePass = () => {
         </span>
       </div>
 
-      <button className='generate_btn'>Generate</button>
+      <button onClick={handleSubmit} className='generate_btn'>Generate</button>
       <div className='generated_pass'>
-        password <i class="fa-solid fa-eye-slash"></i> <i class="fa-solid fa-eye"></i>
+        {password} <i className="fa-solid fa-eye-slash"></i> <i className="fa-solid fa-eye"></i>
       </div>
     </div>
   );
