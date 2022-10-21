@@ -1,6 +1,6 @@
-# Password Manager
+# OnePass
 
-Password Manager is a simple app that helps you generate passwords and store them securely.
+OnePass is an app that helps you generate and manage passwords securely.
 
 This project's goals are:
 - Learn how to `salt` passwords.
