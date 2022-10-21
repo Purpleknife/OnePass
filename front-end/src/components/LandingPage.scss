@@ -1,4 +1,27 @@
 @import "~bootstrap/scss/bootstrap";
+@import "../styles/variables";
+
+
+.landing-page {
+  
+  .generate-landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20em;
+  }
+
+  .login_register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 30%;
+    margin-left: 42em;
+  }
+
+}
 
 .register {
   background-color: rgb(112, 206, 112);

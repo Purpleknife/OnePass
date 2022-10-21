@@ -19,18 +19,27 @@ const LandingPage = (props) => {
   const handleLoginShow = () => setShowLogin(true);
 
   return (
-    <div className='test'>
-      <GeneratePass />
+    <div className='landing-page'>
+      <div className='generate-landing'>
+        <GeneratePass />
+      </div>
       <br />
-      <Button className='login' onClick={handleLoginShow}>
-        Login
-      </Button>
-      <Login user={props.user} setUser={props.setUser} handleClose={handleLoginClose} show={showLogin}/>
-      &nbsp;
-      <Button className='register' onClick={handleRegisterShow}>
-        Register
-      </Button>
-      <Register user={props.user} setUser={props.setUser} handleClose={handleRegisterClose} show={showRegister}/>
+      <div className='login_register'>
+        <span>
+          If you want to save your passwords <i className="fa-sharp fa-solid fa-arrow-down"></i>
+        </span>
+        <div className='btns'>
+          <Button className='login' onClick={handleLoginShow}>
+            Login
+          </Button>
+          <Login user={props.user} setUser={props.setUser} handleClose={handleLoginClose} show={showLogin}/>
+          &nbsp;
+          <Button className='register' onClick={handleRegisterShow}>
+            Register
+          </Button>
+          <Register user={props.user} setUser={props.setUser} handleClose={handleRegisterClose} show={showRegister}/>
+        </div>
+      </div>
     </div>
   );
 }
