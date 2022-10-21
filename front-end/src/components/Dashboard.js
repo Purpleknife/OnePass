@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useNavigate, Navigate } from 'react-router-dom';
 import GeneratePass from './GeneratePass';
 import OneLogin from './OneLogin';
+import NavBar from './NavBar';
 
 import './Dashboard.scss';
 
@@ -12,12 +13,11 @@ const Dashboard = (props) => {
   const [passwords, setPasswords] = useState();
   const [passList, setPassList] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
-  const username = cookies.username;
   const user_id = cookies.user_id;
   const loggedIn = cookies.loggedIn;
   console.log('loggedIn', loggedIn);
 
-  const navigate = useNavigate();
+  
 
   const fetchDashboard = async(e) => {
     await axios.get(`/dashboard/${user_id}`)
@@ -60,39 +60,24 @@ const Dashboard = (props) => {
       generatePassList();
     }
   }, [passwords]);
-  
-
-
-  const logout = () => {
-    axios.get('/logout')
-      .then(data => {
-        props.setUser(null);
-        removeCookie('username', {path: '/'});
-        removeCookie('user_id', {path: '/'});
-        removeCookie('loggedIn', {path: '/'});
-        removeCookie('user_session', {path: '/'});
-        navigate('/');
-      })
-  };
 
 
   return (
     <div>
       { !loggedIn 
       ? <Navigate to="/" />
-      : <div> 
-        Hi from Dashboard!
-        Hi, {username}!
-        <br />
-        <button type='submit' onClick={logout}>Logout</button>
-      </div>
-      }
-
-      <GeneratePass />
+      : 
+      <div>
+        <NavBar setUser={props.setUser} />
+        <GeneratePass />
 
       <div className='container'>
         {passList}
       </div>
+        
+      </div>
+      }
+      
     </div>
   );
 }

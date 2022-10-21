@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Register from './Register';
 import Login from './Login';
 import GeneratePass from './GeneratePass';
+import NavBar from './NavBar';
 
 import './LandingPage.scss';
 
@@ -20,6 +21,7 @@ const LandingPage = (props) => {
 
   return (
     <div className='landing-page'>
+      <NavBar setUser={props.setUser} />
       <div className='generate-landing'>
         <GeneratePass />
       </div>
