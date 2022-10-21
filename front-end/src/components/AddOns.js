@@ -13,7 +13,6 @@ const AddOns = (props) => {
   const save = async(event) => {
 
     axios.post(`/dashboard/${user_id}`, {
-      user_id: cookies.user_id,
       title: titleInput.current.value,
       url: URLInput.current.value,
       content: props.password

@@ -99,7 +99,7 @@ module.exports = (db) => {
 
   //Route to add a user's password to the db:
   router.post('/dashboard/:user_id', (req, res) => {
-    const user_id = req.body.user_id;
+    const user_id = req.params.user_id;
     const title = req.body.title;
     const url = req.body.url;
     const content = req.body.content;
