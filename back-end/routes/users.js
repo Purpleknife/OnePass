@@ -97,7 +97,7 @@ module.exports = (db) => {
   });
 
 
-  //Route to add a user's password to the db:
+  // Route to add a user's password to the db:
   router.post('/dashboard/:user_id', (req, res) => {
     const user_id = req.params.user_id;
     const title = req.body.title;
@@ -120,6 +120,28 @@ module.exports = (db) => {
         console.log(error.message);
       });
   });
+
+
+  // Route to delete the user's passwords:
+  router.delete('/dashboard/:user_id/:id', (req, res) => {
+    const user_id = req.params.user_id;
+    const id = req.params.id;
+
+    const queryParams = [user_id, id];
+    const queryString = `
+      DELETE FROM passwords
+      WHERE user_id = $1
+      AND passwords.id = $2
+      RETURNING *;
+      `;
+    db.query(queryString, queryParams)
+    .then(data => {
+      res.json(data.rows);
+    })
+    .catch(error => {
+      console.log(error.message);
+    });
+  })
 
   return router;
 };

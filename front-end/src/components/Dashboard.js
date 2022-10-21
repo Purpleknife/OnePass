@@ -43,6 +43,7 @@ const Dashboard = (props) => {
           content={pass.content}
           url={pass.url}
           date={pass.date_created}
+          fetch={fetchDashboard}
         />
       )
     });
