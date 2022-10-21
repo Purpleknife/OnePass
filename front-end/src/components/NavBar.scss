@@ -1,0 +1,38 @@
+@import "../styles/variables";
+
+.navbar {
+  //background: linear-gradient(to right, black 50%, #dae0de 50%);
+  background: linear-gradient(
+    to right,
+    $primary-color,
+    $primary-color 15rem,
+    transparent 1rem,
+    transparent 100%
+  );
+  background-color: $secondary-color;
+  height: 7em;
+
+  .cover {
+    margin-left: 13em;
+    max-width: 100vh;
+    height: 7em;
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: cover;
+  }
+  
+  .logo {
+    padding-left: 1.8em;
+    z-index: 100;
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    font-family: $primary-font;
+  }
+
+  .user_info {
+    margin-left: 20em;
+  }
+
+}

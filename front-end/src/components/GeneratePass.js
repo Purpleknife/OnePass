@@ -97,8 +97,9 @@ const GeneratePass = () => {
         characters = lowercase + uppercase + symbols + numbers;
       }
       
+      console.log('chars', characters);
       const shuffledChars = shuffle(characters); //So the order of the characters added is not always the same.
-
+      console.log('shuffled', shuffledChars);
       setPassword(generatePassword(shuffledChars, length));
       //setShowPass(!showPass);
       setShowError('');

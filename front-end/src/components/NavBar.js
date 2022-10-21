@@ -4,9 +4,13 @@ import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+import './NavBar.scss';
+
 const NavBar = (props) => {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const username = cookies.username;
+  const loggedIn = cookies.loggedIn;
+
   const navigate = useNavigate();
 
   const logout = () => {
@@ -23,11 +27,16 @@ const NavBar = (props) => {
 
   return (
     <div className='navbar'>
+      <img
+          className="cover"
+          src='images/lock.jpg'
+      />
       <div className='logo'>OnePass</div>
-      <div className='user_info'>
+
+      {loggedIn && <div className='user_info'>
         <span>Welcome, {username}!</span>
         <span className='logout'><button type='submit' onClick={logout}>Logout</button></span>
-      </div>
+      </div>}
     </div>
   );
 }
