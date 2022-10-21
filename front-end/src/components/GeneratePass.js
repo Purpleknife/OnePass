@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { useCookies } from 'react-cookie';
 
 import './GeneratePass.scss';
 
@@ -7,8 +8,12 @@ import Tooltip from 'react-bootstrap/Tooltip';
 import Alert from 'react-bootstrap/Alert';
 
 import { generatePassword, shuffle } from '../helpers/helpers';
+import AddOns from './AddOns';
 
 const GeneratePass = () => {
+  const [cookies, setCookie] = useCookies(['user']);
+  const loggedIn = cookies.loggedIn;
+
   const [length, setLength] = useState(0);
   const [lowercaseIsChecked, setLowercaseIsChecked] = useState(false);
   const [uppercaseIsChecked, setUppercaseIsChecked] = useState(false);
@@ -30,7 +35,7 @@ const GeneratePass = () => {
   const copy = () => {
     navigator.clipboard.writeText(password);
     setCopied(!copied);
-  }
+  };
 
 
   //To set the password's length:
@@ -68,7 +73,7 @@ const GeneratePass = () => {
     const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowercase = 'abcdefghijklmnopqrstuvwxyz';
     const numbers = '0123456789';
-    const symbols = '@#$%&*-';
+    const symbols = '~!@#$%^&*()_-+=[{]}|;:,.<>/?';
 
     let characters = '';
 
@@ -173,6 +178,8 @@ const GeneratePass = () => {
           <i onClick={copy} className="fa-solid fa-copy"></i>
         </OverlayTrigger>
       </div>
+
+      {loggedIn && <AddOns password={password} />}
 
     </div>
   );

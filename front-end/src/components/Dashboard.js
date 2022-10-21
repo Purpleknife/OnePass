@@ -3,9 +3,10 @@ import { useCookies } from 'react-cookie';
 
 import axios from 'axios';
 import { useNavigate, Navigate } from 'react-router-dom';
+import GeneratePass from './GeneratePass';
 
 const Dashboard = (props) => {
-  //const [passwords, setPasswords] = useState();
+  const [passwords, setPasswords] = useState();
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   const username = cookies.username;
   const user_id = cookies.user_id;
@@ -17,7 +18,7 @@ const Dashboard = (props) => {
   const fetchDashboard = async(e) => {
     await axios.get(`/dashboard/${user_id}`)
       .then(res => {
-        console.log('Get Dashboard data');
+        console.log('Get Dashboard data', res.data);
         //setPasswords(res.data);
       })
       .catch(error => {
@@ -52,6 +53,9 @@ const Dashboard = (props) => {
         <button type='submit' onClick={logout}>Logout</button>
       </div>
       }
+
+      <GeneratePass />
+
     </div>
   );
 }
