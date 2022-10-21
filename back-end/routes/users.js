@@ -96,5 +96,33 @@ module.exports = (db) => {
     return res.json('You\'re logged out!');
   });
 
+
+  //Route to fetch ALL passwords for a specific user:
+  
+
+  //Route to add a user's password to the db:
+  router.post('/passwords/:user_id'), (req, res) => {
+    const user_id = req.params.user_id;
+    const title = req.body.title;
+    const URL = req.body.URL;
+    const content = req.body.content;
+    
+    const queryParams = [user_id, title, URL, content];
+    const queryString = `
+    INSERT INTO passwords (user_id, title, URL, content, date_created)
+    VALUES ($1, $2, $3, $4, $5, CURRENT_DATE)
+    RETURNING *;
+    `;
+
+    db.query(queryString, queryParams)
+      .then(data => {
+        console.log('user passwords', data.rows[0]);
+        res.json(data.rows[0]);
+      })
+      .catch(error => {
+        console.log(error.message);
+      });
+  };
+
   return router;
 };
