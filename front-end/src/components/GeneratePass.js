@@ -10,6 +10,18 @@ const GeneratePass = () => {
   const [symbolsIsChecked, setSymbolsIsChecked] = useState(false);
   const [numbersIsChecked, setNumbersIsChecked] = useState(false);
 
+
+  //To set the password's length:
+  const increaseLength = () => {
+    setLength(prev => prev + 1);
+  };
+
+  const decreaseLength = () => {
+    setLength(prev => prev - 1);
+  };
+
+
+  //To know which checkbox was checked:
   const handleOnChange = (condition) => {
     if (condition === 'lowercase') {
       setLowercaseIsChecked(!lowercaseIsChecked);
@@ -27,14 +39,6 @@ const GeneratePass = () => {
       setNumbersIsChecked(!numbersIsChecked);
       console.log('numbers checked!!');
     }
-  };
-
-  const increaseLength = () => {
-    setLength(prev => prev + 1);
-  };
-
-  const decreaseLength = () => {
-    setLength(prev => prev - 1);
   };
 
   
