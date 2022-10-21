@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import './GeneratePass.scss';
+
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 
 import { generatePassword, shuffle } from '../helpers/helpers';
 
@@ -12,11 +15,20 @@ const GeneratePass = () => {
   const [numbersIsChecked, setNumbersIsChecked] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
+  const [copied, setCopied] = useState(false);
+
 
   //To show and hide password:
   const togglePassword = () => {
     setPasswordShown(!passwordShown);
   };
+
+
+  //Copy password to clipboard:
+  const copy = () => {
+    navigator.clipboard.writeText(password);
+    setCopied(!copied);
+  }
 
 
   //To set the password's length:
@@ -137,8 +149,19 @@ const GeneratePass = () => {
           type={!passwordShown ? 'text' : 'password'}
         />
         {!passwordShown ? <i onClick={togglePassword} className="fa-solid fa-eye-slash"></i> : <i onClick={togglePassword} className="fa-solid fa-eye"></i>}
-        
-        
+
+        &nbsp;
+        <OverlayTrigger
+          key='right'
+          placement='right'
+          overlay={
+            <Tooltip id={`tooltip-right`}>
+              {copied ? 'Copied!' : 'Copy to clipboard.'}
+            </Tooltip>
+          }
+        >
+          <i onClick={copy} className="fa-solid fa-copy"></i>
+        </OverlayTrigger>
       </div>
     </div>
   );
