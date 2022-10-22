@@ -10,7 +10,7 @@ import Alert from 'react-bootstrap/Alert';
 import { generatePassword, shuffle } from '../helpers/helpers';
 import AddOns from './AddOns';
 
-const GeneratePass = () => {
+const GeneratePass = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
   const loggedIn = cookies.loggedIn;
 
@@ -104,15 +104,13 @@ const GeneratePass = () => {
       //setShowPass(!showPass);
       setShowError('');
     }
-    
-
-  }
+  };
   
 
   return (
     <div className='generate_form'>
       <div className='title'>
-        <span className='logo'>OnePass<br /></span>
+        {!loggedIn && <span className='logo'>OnePass<br /></span>}
         <span className='phrase'>Choose your prefered options then generate your password.</span>
       </div>
 
@@ -180,7 +178,16 @@ const GeneratePass = () => {
         </OverlayTrigger>
       </div>
 
-      {loggedIn && <AddOns password={password} />}
+      {loggedIn && 
+        <AddOns 
+          password={password} 
+          setLowercase={setLowercaseIsChecked}
+          setUppercase={setUppercaseIsChecked} 
+          setSymbols={setSymbolsIsChecked}
+          setNumbers={setNumbersIsChecked}
+          setPassword={setPassword}
+          setLength={setLength}
+          fetch={props.fetch}/>}
 
     </div>
   );

@@ -1,8 +1,7 @@
+@import "../styles/variables";
 
 .container {
-  display: table;
-  flex-flow: row;
-  // justify-content: space-between;
+  margin-bottom: -1em;
 
   .one_card {
     border: 1px solid black;
@@ -10,8 +9,53 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    width: 25em;
     margin-top: 1em;
+    flex-wrap: wrap;
+    font-family: $third-font;
+    border-radius: 5px;
+
+    .fa-trash {
+      margin-left: 22em;
+      padding-top: 0.5em;
+      cursor: pointer;
+      color: rgb(247, 121, 121);
+    }
+
+    #show {
+      cursor: pointer;
+      padding-left: 0.5em;
+    }
+
+    #hide {
+      cursor: pointer;
+    }
+
+    .fa-copy {
+      cursor: pointer;
+    }
+
+    .date {
+      font-size: 12px;
+    }
+
+    .title {
+      color: $third-color;
+      font-weight: bold;
+      font-size: 28px;
+      font-family: $primary-font;
+      padding-bottom: 1em;
+    }
+
+    .email {
+      padding-left: 0.5em;
+      padding-bottom: 0.5em;
+    }
+
+    .pass {
+      padding-left: 0.5em;
+      //padding-right: 1.8em;
+    }
   }
 
 }

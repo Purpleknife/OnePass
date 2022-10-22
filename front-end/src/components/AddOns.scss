@@ -1,0 +1,63 @@
+@import "../styles/variables";
+
+.addons_container {
+  display:flex;
+  padding-left: 1.8em;
+  padding-top: 1.4em;
+  padding-bottom: 0.5em;
+
+  .inputs {
+    //display: flex;
+    #email_input {
+      padding-right: 0.5em;
+    }
+  }
+
+  .save_btn {
+    display: flex;
+    padding-left: 1em;
+  }
+
+  .save_btn button{
+    background-color: $other-color;
+    border: 0 solid #E5E7EB;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    font-weight: 700;
+    justify-content: center;
+    line-height: 1.75rem;
+    padding: .75rem 1.65rem;
+    position: relative;
+    text-align: center;
+    text-decoration: none #000000 solid;
+    text-decoration-thickness: auto;
+    width: 20%;
+    max-width: 460px;
+    position: relative;
+    cursor: pointer;
+    //transform: rotate(-2deg);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+  .save_btn button:focus {
+    outline: 0;
+  }
+  
+  .save_btn button:after {
+    content: '';
+    position: absolute;
+    border: 1px solid #000000;
+    bottom: 4px;
+    left: 4px;
+    width: calc(100% - 1px);
+    height: calc(100% - 1px);
+  }
+  
+  .save_btn button:hover:after {
+    bottom: 2px;
+    left: 2px;
+  }
+}

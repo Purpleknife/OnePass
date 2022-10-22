@@ -41,7 +41,7 @@ const Dashboard = (props) => {
           id={pass.id}
           title={pass.title}
           content={pass.content}
-          url={pass.url}
+          email={pass.email}
           date={pass.date_created}
           fetch={fetchDashboard}
         />
@@ -49,7 +49,6 @@ const Dashboard = (props) => {
     });
     setPassList(loginList);
   }
-
 
   useEffect(() => {
     fetchDashboard();
@@ -68,9 +67,11 @@ const Dashboard = (props) => {
       ? <Navigate to="/" />
       : 
       <div>
-        <NavBar setUser={props.setUser} />
-        <GeneratePass />
 
+        <NavBar setUser={props.setUser} />
+        <div className='generate_pass_dash'>
+          <GeneratePass fetch={fetchDashboard}/>
+        </div>
       <div className='container'>
         {passList}
       </div>

@@ -1,6 +1,16 @@
+@import "../styles/variables";
 
+
+.generate_pass_dash {
+  display: flex;
+  justify-content: center;
+}
 
 .container {
-  display: flex;
-  //flex-flow: row;
+  margin-top: 2em;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  grid-gap: 5px;
+  align-items: stretch;
+  padding-bottom: 2em;
 }
