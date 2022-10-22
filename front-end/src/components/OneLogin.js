@@ -58,7 +58,7 @@ const OneLogin = (props) => {
       <div className='one_card'>
         <i onClick={deletePass} className="fa-solid fa-trash"></i>
         <span className='title'>{props.title}</span>
-        <span className='date'><i className="fa-sharp fa-solid fa-pen-to-square"></i>&nbsp;{props.date.slice(0, 10)}</span>
+        <span className='date'><i className="fa-solid fa-calendar-days"></i>&nbsp;{props.date.slice(0, 10)}</span>
         <br />
         <span className='email'>
           <strong><i className="fa-sharp fa-solid fa-envelope"></i></strong>&nbsp;&nbsp;

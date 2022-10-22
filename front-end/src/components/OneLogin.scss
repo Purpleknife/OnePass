@@ -25,10 +25,13 @@
     #show {
       cursor: pointer;
       padding-left: 0.5em;
+      padding-right: 0.2em;
     }
 
     #hide {
       cursor: pointer;
+      padding-left: 0.5em;
+      padding-right: 0.2em;
     }
 
     .fa-copy {
@@ -49,12 +52,42 @@
 
     .email {
       padding-left: 0.5em;
-      padding-bottom: 0.5em;
+      margin-bottom: 0.5em;
+      border: 1px solid $secondary-color;
+      width: 18em;
+      background: linear-gradient(
+        to right,
+        #acdaeb,
+        #acdaeb 2.6rem,
+        transparent 2rem,
+        transparent 100%
+      );
+
+      .fa-envelope {
+        padding-right: 0.3em;
+      }
+
+      input {
+        //position: absolute;
+        overflow-wrap:unset;
+      }
     }
 
     .pass {
       padding-left: 0.5em;
-      //padding-right: 1.8em;
+      border: 1px solid $secondary-color;
+      width: 18em;
+      background: linear-gradient(
+        to right,
+        #acdaeb,
+        #acdaeb 2.6rem,
+        transparent 2rem,
+        transparent 100%
+      );
+
+      .fa-lock {
+        padding-right: 0.3em;
+      }
     }
   }
 
