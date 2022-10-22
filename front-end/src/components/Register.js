@@ -10,6 +10,9 @@ import bcrypt from 'bcryptjs';
 
 import { useCookies } from 'react-cookie';
 
+
+import './Register.scss';
+
 const Register = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
 
@@ -32,33 +35,41 @@ const Register = (props) => {
     const passwordConfirmation = passwordConfirmationInput.current.value;
     const saltedPasswordConfirmation = bcrypt.hashSync(passwordConfirmation, salt);
 
-    await axios.post('/users', {
-      username: usernameInput.current.value,
-      first_name: firstNameInput.current.value,
-      last_name: lastNameInput.current.value,
-      email: emailInput.current.value,
-      password: saltedPassword, //=> BCRYPT
-      password_confirmation: saltedPasswordConfirmation
-    })
+    axios.get('/users')
       .then(res => {
-        console.log('res.data.userData', res.data.userData);
-        if (res.data.userData.email === emailInput.current.value) {
+    
+        const allUsers = res.data;
+        const fetchUser = allUsers.find((user) => user.email === emailInput.current.value);
+        if (fetchUser) {
           alert('This email adress is already registered!');
-        } 
-        if (res.data.userData.email !== emailInput.current.value) {
-          props.setUser(res.data.userData);
-          setCookie('username', res.data.userData.username, {path: '/'});
-          setCookie('user_id', res.data.userData.id, {path: '/'});
-          setCookie('user_session', res.data.token, {path: '/'});
-          setCookie('loggedIn', 'yes', {path: '/'});
-          const user_id = res.data.userData.id;
-          navigate(`/dashboard/${user_id}`);
+        } else {
+          axios.post('/users', {
+            username: usernameInput.current.value,
+            first_name: firstNameInput.current.value,
+            last_name: lastNameInput.current.value,
+            email: emailInput.current.value,
+            password: saltedPassword, //=> BCRYPT
+            password_confirmation: saltedPasswordConfirmation
+          })
+            .then(res => {
+              props.setUser(res.data.userData);
+              setCookie('username', res.data.userData.username, {path: '/'});
+              setCookie('user_id', res.data.userData.id, {path: '/'});
+              setCookie('user_session', res.data.token, {path: '/'});
+              setCookie('loggedIn', 'yes', {path: '/'});
+              const user_id = res.data.userData.id;
+              navigate(`/dashboard/${user_id}`);
+            })
+            .catch((error) => {
+              console.log(error.message);
+            })
         }
       })
       .catch((error) => {
         console.log(error.message);
-      })
+      });
   }
+
 
   return (
     <>
@@ -135,7 +146,7 @@ const Register = (props) => {
         </Modal.Body>
         <Modal.Footer>
 
-          <Button variant="dark" onClick={handleSubmit}>
+          <Button id='register' onClick={handleSubmit}>
             Register
           </Button>
         </Modal.Footer>
