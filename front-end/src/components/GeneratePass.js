@@ -164,7 +164,7 @@ const GeneratePass = () => {
           type={!passwordShown ? 'text' : 'password'}
           disabled
         />
-        {!passwordShown ? <i onClick={togglePassword} className="fa-solid fa-eye-slash"></i> : <i onClick={togglePassword} className="fa-solid fa-eye"></i>}
+        {!passwordShown ? <i id='hide' onClick={togglePassword} className="fa-solid fa-eye-slash"></i> : <i id='show' onClick={togglePassword} className="fa-solid fa-eye"></i>}
 
         &nbsp;
         <OverlayTrigger
@@ -176,7 +176,7 @@ const GeneratePass = () => {
             </Tooltip>
           }
         >
-          <i onClick={copy} className="fa-solid fa-copy"></i>
+          <i id='copy' onClick={copy} className="fa-solid fa-copy"></i>
         </OverlayTrigger>
       </div>
 
