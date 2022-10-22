@@ -101,12 +101,12 @@ module.exports = (db) => {
   router.post('/dashboard/:user_id', (req, res) => {
     const user_id = req.params.user_id;
     const title = req.body.title;
-    const url = req.body.url;
+    const email = req.body.email;
     const content = req.body.content;
     
-    const queryParams = [user_id, title, url, content];
+    const queryParams = [user_id, title, email, content];
     const queryString = `
-    INSERT INTO passwords (user_id, title, url, content, date_created)
+    INSERT INTO passwords (user_id, title, email, content, date_created)
     VALUES ($1, $2, $3, $4, CURRENT_DATE)
     RETURNING *;
     `;
