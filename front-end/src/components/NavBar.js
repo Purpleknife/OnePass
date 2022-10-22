@@ -27,15 +27,19 @@ const NavBar = (props) => {
 
   return (
     <div className='navbar'>
-      <img
-          className="cover"
-          src='images/lock.jpg'
-      />
-      <div className='logo'>OnePass</div>
+      <div className='side'>
+        {/* <img
+            id="cover"
+            src='images\lock.jpg'
+            alt='side-nav'
+        /> */}
+        <div id='cover'></div>
+        <div className='logo'>OnePass</div>
+      </div>
 
       {loggedIn && <div className='user_info'>
-        <span>Welcome, {username}!</span>
-        <span className='logout'><button type='submit' onClick={logout}>Logout</button></span>
+        <span id='welcome'>Welcome, <strong>{username}</strong>!</span>&nbsp;&nbsp;
+        <span id='logout'><button type='submit' onClick={logout}>Logout</button></span>
       </div>}
     </div>
   );
