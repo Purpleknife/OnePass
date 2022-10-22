@@ -154,7 +154,7 @@ const GeneratePass = (props) => {
         </span>
       </div>
 
-      <button onClick={handleSubmit} className='generate_btn'>Generate</button>
+      <button onClick={handleSubmit} className='generate_btn'>Generate </button>
       
       <div className='generated_pass'>
         <input 

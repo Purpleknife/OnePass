@@ -69,27 +69,28 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  border-radius: none;
+  //border-radius: none;
+  border-radius: 3px !important;
 }
 
 .login:focus {
   outline: 0;
 }
 
-.login:after {
-  content: '';
-  position: absolute;
-  border: 1px solid #000000;
-  bottom: 4px;
-  left: 4px;
-  width: calc(100% - 1px);
-  height: calc(100% - 1px);
-}
+// .login:after {
+//   content: '';
+//   position: absolute;
+//   border: 1px solid #000000;
+//   bottom: 4px;
+//   left: 4px;
+//   width: calc(100% - 1px);
+//   height: calc(100% - 1px);
+// }
 
-.login:hover:after {
-  bottom: 2px;
-  left: 2px;
-}
+// .login:hover:after {
+//   bottom: 2px;
+//   left: 2px;
+// }
 
 .login:hover {
   background-color: $other-color;

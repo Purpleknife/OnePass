@@ -28,7 +28,7 @@
       font-size: 20px;
     }
     .logo {
-      font-size: 38px;
+      font-size: 40px;
     }
   }
 
@@ -57,7 +57,7 @@
     background-color: $third-color;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
-    color: white;
+    color: $primary-color;
     display: flex;
     font-weight: 700;
     justify-content: center;
@@ -75,6 +75,7 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    border-radius: 3px;
   }
 
   .generate_btn:focus {

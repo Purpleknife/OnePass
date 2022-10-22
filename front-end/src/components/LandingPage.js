@@ -34,7 +34,7 @@ const LandingPage = (props) => {
             Login
           </Button>
           <Login user={props.user} setUser={props.setUser} handleClose={handleLoginClose} show={showLogin}/>
-          &nbsp;
+          &nbsp;&nbsp;&nbsp;
           <Button className='login' onClick={handleRegisterShow}>
             Register
           </Button>
