@@ -103,6 +103,11 @@ const GeneratePass = (props) => {
       setPassword(generatePassword(shuffledChars, length));
       //setShowPass(!showPass);
       setShowError('');
+      setLength(0);
+      setLowercaseIsChecked(false);
+      setUppercaseIsChecked(false);
+      setNumbersIsChecked(false);
+      setSymbolsIsChecked(false);
     }
   };
   
