@@ -1,0 +1,27 @@
+@import "../styles/variables";
+
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-title.h4 {
+  padding-left: 7.1em;
+  font-family: $third-font;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.modal-body {
+  font-family: $third-font;
+}
+
+label.form-label {
+  font-weight: bold;
+}
+
+#register {
+  background-color: $other-color;
+  border: none !important;
+  border-radius: 3px;
+}

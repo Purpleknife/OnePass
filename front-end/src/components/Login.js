@@ -11,6 +11,8 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
 
+import './Login.scss';
+
 const Login = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
 
@@ -93,7 +95,7 @@ const Login = (props) => {
         </Modal.Body>
         <Modal.Footer>
 
-          <Button variant="dark" onClick={handleSubmit}>
+          <Button id='login' onClick={handleSubmit}>
             Login
           </Button>
         </Modal.Footer>
