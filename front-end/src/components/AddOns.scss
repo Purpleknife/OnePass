@@ -7,9 +7,21 @@
   padding-bottom: 0.5em;
 
   .inputs {
-    //display: flex;
+
     #email_input {
       padding-right: 0.5em;
+      
+    }
+
+    br {
+      content: "";
+      margin: 2em;
+      display: block;
+      font-size: 24%;
+    }
+
+    span #title_input {
+      margin-bottom: 2em;
     }
   }
 

@@ -40,14 +40,14 @@ const AddOns = (props) => {
   return (
     <div className='addons_container'>
       <div className='inputs'>
-      <strong>Title:</strong> &nbsp;
+      <span id='title_input'><strong>Title:</strong> &nbsp;
       <input
         key='title'
         id='title'
         type='text'
         ref={titleInput}
         placeholder='Enter a title...'
-      />
+      /></span>
       <br />
       <span id='email_input'><strong>Email:</strong> &nbsp;
       <input
