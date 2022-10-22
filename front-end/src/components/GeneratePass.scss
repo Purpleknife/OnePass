@@ -13,13 +13,23 @@
   padding-top: 2em;
   padding-bottom: 1em;
   font-family: $third-font;
-  background-color: $thrid-color;
+  color: white;
+  //background-color: $thrid-color;
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+
   
   .title {
     padding-bottom: 1em;
-    font-size: 25px;
+    
     font-weight: bold;
     font-family: $primary-font;
+
+    .phrase {
+      font-size: 20px;
+    }
+    .logo {
+      font-size: 38px;
+    }
   }
 
   .options {
@@ -44,7 +54,7 @@
   }
 
   .generate_btn {
-    background-color: $primary-color;
+    background-color: $third-color;
     border: 0 solid #E5E7EB;
     box-sizing: border-box;
     color: white;
@@ -104,14 +114,16 @@
       font-weight: bold;
       text-align: center;
       padding-left: 2em;
+      font-size: 16px;
     }
 
-    #copy {
+    .fa-copy {
       float: right;
       padding-top: 0.7em;
       padding-right: 0.5em;
       font-size: 20px;
       cursor: pointer;
+      color: #000000;
     }
 
     #show {
@@ -119,6 +131,7 @@
       font-size: 20px;
       padding-left: 2.5em;
       cursor: pointer;
+      color: #000000;
     }
 
     #hide {
@@ -126,6 +139,18 @@
       font-size: 20px;
       padding-left: 2.5em;
       cursor: pointer;
+      color: #000000;
     }
+
+    
   }
 }
+input[type='checkbox'] {
+  accent-color: $third-color;
+}
+
+#tooltip-right  > .tooltip-inner {
+  //background-color: $third-color  !important;
+  border: 1px solid $third-color;
+}
+

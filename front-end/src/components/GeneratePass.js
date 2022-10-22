@@ -112,8 +112,8 @@ const GeneratePass = () => {
   return (
     <div className='generate_form'>
       <div className='title'>
-        Generate your password <i className="fa-solid fa-key-skeleton"></i><br />
-        Choose your prefered options then click on Generate.
+        <span className='logo'>OnePass<br /></span>
+        <span className='phrase'>Choose your prefered options then generate your password.</span>
       </div>
 
       {showError && <Alert key='danger' variant='danger'>
@@ -171,12 +171,12 @@ const GeneratePass = () => {
           key='right'
           placement='right'
           overlay={
-            <Tooltip id={`tooltip-right`}>
+            <Tooltip id='tooltip-right'>
               {copied ? 'Copied!' : 'Copy to clipboard.'}
             </Tooltip>
           }
         >
-          <i id='copy' onClick={copy} className="fa-solid fa-copy"></i>
+          <i onClick={copy} className="fa-solid fa-copy"></i>
         </OverlayTrigger>
       </div>
 

@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Register from './Register';
 import Login from './Login';
 import GeneratePass from './GeneratePass';
-import NavBar from './NavBar';
+//import NavBar from './NavBar';
 
 import './LandingPage.scss';
 
@@ -21,7 +21,6 @@ const LandingPage = (props) => {
 
   return (
     <div className='landing-page'>
-      <NavBar setUser={props.setUser} />
       <div className='generate-landing'>
         <GeneratePass />
       </div>
@@ -36,7 +35,7 @@ const LandingPage = (props) => {
           </Button>
           <Login user={props.user} setUser={props.setUser} handleClose={handleLoginClose} show={showLogin}/>
           &nbsp;
-          <Button className='register' onClick={handleRegisterShow}>
+          <Button className='login' onClick={handleRegisterShow}>
             Register
           </Button>
           <Register user={props.user} setUser={props.setUser} handleClose={handleRegisterClose} show={showRegister}/>

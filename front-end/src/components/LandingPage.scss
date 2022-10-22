@@ -3,12 +3,20 @@
 
 
 .landing-page {
+
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../public/images/lock.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: inherit;
+  background-position: center left 6.1em;
+  min-height: 100vh;
+  background-color: #1c1c1c;
   
   .generate-landing {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 8em;
+    padding-top: 8em;
     
   }
 
@@ -23,8 +31,9 @@
     padding-top: 1em;
     padding-bottom: 1em;
     font-family: $third-font;
-    background-color: $thrid-color;
-
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    color: white;
+    
     span {
       font-weight: bold;
       padding-bottom: 1em;
@@ -39,7 +48,7 @@
 }
 
 .login {
-  background-color: $primary-color;
+  background-color: $other-color;
   border: 0 solid #E5E7EB;
   box-sizing: border-box;
   color: white;
@@ -60,6 +69,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  border-radius: none;
 }
 
 .login:focus {
@@ -81,50 +91,15 @@
   left: 2px;
 }
 
-
-.register {
-  background-color: $primary-color;
-  border: 0 solid #E5E7EB;
-  box-sizing: border-box;
-  color: white;
-  //display: flex;
-  font-weight: 700;
-  //justify-content: center;
-  line-height: 1.75rem;
-  padding: .75rem 1.65rem;
-  position: relative;
-  text-align: center;
-  text-decoration: none #000000 solid;
-  text-decoration-thickness: auto;
-  width: 7em;
-  max-width: 460px;
-  position: relative;
-  cursor: pointer;
-  //transform: rotate(-2deg);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+.login:hover {
+  background-color: $other-color;
 }
 
-.register:focus {
-  outline: 0 !important;
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: $other-color !important;
+  border-radius: 0px;
 }
 
-.register:after {
-  content: '';
-  position: absolute;
-  border: 1px solid #000000;
-  bottom: 4px;
-  left: 4px;
-  width: calc(100% - 1px);
-  height: calc(100% - 1px);
-}
-
-.register:hover:after {
-  bottom: 2px;
-  left: 2px;
-  background-color: transparent !important;
-}
 
 .modal-header {
   border-bottom: none;
