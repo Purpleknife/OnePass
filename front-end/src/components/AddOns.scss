@@ -52,7 +52,8 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    padding-top: 1em;
+    padding-top: 1.1em;
+    border-radius: 3px;
   }
 
   .save_btn button:focus {

@@ -39,12 +39,15 @@
 
     span button {
       background-color: $third-color;
-      color: white;
+      color: $primary-color;
       font-size: 18px;
       font-weight: bold;
       width: 5em;
       height: 2em;
-      border: white;
+      border: none;
+      border-color: white;
+      border-radius: 3px;
+   
     }
   }
 

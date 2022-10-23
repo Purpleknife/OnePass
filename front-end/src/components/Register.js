@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
@@ -15,6 +16,7 @@ import './Register.scss';
 
 const Register = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
+  const [showError, setShowError] = useState('');
 
   const usernameInput = useRef();
   const firstNameInput = useRef();
@@ -41,7 +43,7 @@ const Register = (props) => {
         const allUsers = res.data;
         const fetchUser = allUsers.find((user) => user.email === emailInput.current.value);
         if (fetchUser) {
-          alert('This email adress is already registered!');
+          setShowError('This email adress is already registered.');
         } else {
           axios.post('/users', {
             username: usernameInput.current.value,
@@ -57,6 +59,7 @@ const Register = (props) => {
               setCookie('user_id', res.data.userData.id, {path: '/'});
               setCookie('user_session', res.data.token, {path: '/'});
               setCookie('loggedIn', 'yes', {path: '/'});
+              setShowError('');
               const user_id = res.data.userData.id;
               navigate(`/dashboard/${user_id}`);
             })
@@ -78,6 +81,11 @@ const Register = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header>
+
+        {showError && <Alert id='alert' key='danger' variant='danger'>
+        {showError}
+        </Alert>}
+
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">

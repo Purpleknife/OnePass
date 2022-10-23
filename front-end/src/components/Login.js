@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { useCookies } from 'react-cookie';
 
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Alert from 'react-bootstrap/Alert';
 
 import axios from 'axios';
 import bcrypt from 'bcryptjs';
@@ -15,6 +16,7 @@ import './Login.scss';
 
 const Login = (props) => {
   const [cookies, setCookie] = useCookies(['user']);
+  const [showError, setShowError] = useState('');
 
   const emailInput = useRef();
   const passwordInput = useRef();
@@ -44,15 +46,16 @@ const Login = (props) => {
                   setCookie('user_id', res.data.userData.id, {path: '/'});
                   setCookie('loggedIn', 'yes', {path: '/'});
                   setCookie('user_session', res.data.token, {path: '/'});
+                  setShowError('');
                   navigate(`/dashboard/${user_id}`);
                 })
                 .catch(error => console.log(error.message));
             } else {
-              alert('Wrong password!');
+              setShowError('Wrong credentials.');
             }
           }
           if (!fetchUser) {
-            alert('Please register!');
+            setShowError('This email adress is not registered.');
           }
       })
       .catch(error => console.log(error.message));
@@ -66,6 +69,11 @@ const Login = (props) => {
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
+        
+        {showError && <Alert id='alert' key='danger' variant='danger'>
+        {showError}
+        </Alert>}
+
         <Modal.Body>
           <Form>
 

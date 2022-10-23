@@ -38,7 +38,7 @@ const NavBar = (props) => {
       </div>
 
       {loggedIn && <div className='user_info'>
-        <span id='welcome'>Welcome, <strong>{username}</strong>!</span>&nbsp;&nbsp;
+        <span id='welcome'>Welcome, <strong>{username}</strong>!</span>&nbsp;&nbsp;&nbsp;&nbsp;
         <span id='logout'><button type='submit' onClick={logout}>Logout</button></span>
       </div>}
     </div>

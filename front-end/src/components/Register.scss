@@ -5,6 +5,10 @@
   border-bottom: none;
 }
 
+.modal-footer {
+  border-top: none !important;
+}
+
 .modal-title.h4 {
   padding-left: 7.1em;
   font-family: $third-font;
@@ -21,7 +25,18 @@ label.form-label {
 }
 
 #register {
-  background-color: $other-color;
+  background-color: $third-color !important;
   border: none !important;
   border-radius: 3px;
+  color: $primary-color;
+  font-weight: bold;
+  text-align: center;
+  font-family: $third-font;
+}
+
+#alert {
+  width: 20em;
+  display: flex;
+  justify-content: center;
+  margin-left: 5.5em;
 }

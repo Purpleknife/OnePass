@@ -43,11 +43,11 @@
     }
 
     .title {
-      color: $third-color;
+      color: $other-color;
       font-weight: bold;
-      font-size: 28px;
+      font-size: 30px;
       font-family: $primary-font;
-      padding-bottom: 1em;
+      padding-bottom: 0.5em;
     }
 
     .email {
@@ -57,8 +57,8 @@
       width: 18em;
       background: linear-gradient(
         to right,
-        #acdaeb,
-        #acdaeb 2.6rem,
+        $third-color,
+        $third-color 2.6rem,
         transparent 2rem,
         transparent 100%
       );
@@ -79,8 +79,8 @@
       width: 18em;
       background: linear-gradient(
         to right,
-        #acdaeb,
-        #acdaeb 2.6rem,
+        $third-color,
+        $third-color 2.6rem,
         transparent 2rem,
         transparent 100%
       );
