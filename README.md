@@ -10,7 +10,7 @@ This project's goals were:
 - Develop my skills in React (React Router, React Cookie, etc).
 - Learn how to persist data with React even after refreshing the page.
 
-# How it works
+## How it works
 
 - A non-logged-in user can generate passwords.
 - To store their passwords and login info (email), the user needs to register or login.
