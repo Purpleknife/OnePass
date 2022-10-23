@@ -22,6 +22,7 @@ This project's goals were:
 - `Manage and store passwords`: A user can login or register to save their generated passwords.
 - `Secure Login and Register`: The passwords are hashed before getting stored in the database.
 - `Save login info (password and email)`: When a user saves a password, they can give it a title, Facebook for example, and they can also save the email they used to login on Facebook.
+- `Delete saved login info`: A user can delete a saved password and email.
 
 ## Setup
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
