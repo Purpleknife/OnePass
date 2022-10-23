@@ -2,10 +2,8 @@
 
 .generate_form {
   border: 1px solid $primary-color;
-  //border-radius: 10px;
   display: flex;
   align-items: center;
-  //justify-content: center;
   flex-direction: column;
   text-align: center;
   width: 50%;
@@ -14,7 +12,6 @@
   padding-bottom: 1em;
   font-family: $third-font;
   color: white;
-  //background-color: $thrid-color;
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
   border-radius: 4px;
   
@@ -82,21 +79,6 @@
     outline: 0;
   }
   
-  // .generate_btn:after {
-  //   content: '';
-  //   position: absolute;
-  //   border: 1px solid #000000;
-  //   bottom: 4px;
-  //   left: 4px;
-  //   width: calc(100% - 1px);
-  //   height: calc(100% - 1px);
-  // }
-  
-  // .generate_btn:hover:after {
-  //   bottom: 2px;
-  //   left: 2px;
-  // }
-
   .generated_pass {
     margin-top: 2em;
     margin-bottom: 1em;
@@ -151,7 +133,6 @@ input[type='checkbox'] {
 }
 
 #tooltip-right  > .tooltip-inner {
-  //background-color: $third-color  !important;
   border: 1px solid $third-color;
 }
 
