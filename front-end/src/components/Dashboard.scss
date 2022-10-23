@@ -1,9 +1,14 @@
 @import "../styles/variables";
 
 
+// .dashboard {
+//   background-color: $primary-color;
+// }
+
 .generate_pass_dash {
   display: flex;
   justify-content: center;
+  margin-top: 1em;
 }
 
 .container {

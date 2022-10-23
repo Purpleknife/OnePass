@@ -62,7 +62,7 @@ const Dashboard = (props) => {
 
 
   return (
-    <div>
+    <div className='dashboard'>
       { !loggedIn 
       ? <Navigate to="/" />
       : 
