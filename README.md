@@ -36,6 +36,13 @@ This project's goals were:
 ![op-landing-page](https://user-images.githubusercontent.com/107894342/197368630-2bf00a22-ca4a-48d3-98f6-8820387ca664.png)
 ![op-dashboard](https://user-images.githubusercontent.com/107894342/197368633-b34ca842-d493-4bf1-bb44-7cc8999f467b.png)
 
+### App Overview:
+https://user-images.githubusercontent.com/107894342/197369341-048c8f4c-11da-48e8-b1fc-858e7650e2c7.mp4
+
+### Error handling for Login, Register and password's length:
+https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced-bcf7-35a3a3c5549e.mp4
+
+
 ## Dependencies
 - Back-end:
   - express
