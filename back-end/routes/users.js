@@ -28,7 +28,6 @@ module.exports = (db) => {
         const token = jwt.sign({email: email}, secret_token, { expiresIn: '1800s' } );
         const userData = data.rows[0];
 
-        //console.log('OBJECT SENT ===> ', {token, userData});
         res.json({token, userData});
       })
       .catch(error => {
@@ -80,7 +79,6 @@ module.exports = (db) => {
 
     db.query(queryString, queryParams)
       .then(data => {
-        console.log('dashboard', data.rows);
         res.json(data.rows);
       })
       .catch(error => {
@@ -113,7 +111,6 @@ module.exports = (db) => {
 
     db.query(queryString, queryParams)
       .then(data => {
-        console.log('user passwords', data.rows);
         res.json(data.rows);
       })
       .catch(error => {

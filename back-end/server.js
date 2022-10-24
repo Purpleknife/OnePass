@@ -17,8 +17,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use(cookieSession({
-  name: 'session',
-  keys: ['heresakey']
+  name: process.env.SESSION_NAME,
+  keys: [process.env.SESSION_KEY]
 }));
 app.use(methodOverride('_method'));
 app.use(express.static('public'));
