@@ -3,7 +3,7 @@
 OnePass is an app that helps you generate and manage passwords securely.
 
 This project's goals were:
-- Learn how to `salt` passwords.
+- Learn how to salt/ hash passwords.
 - Learn how to store passwords securely.
 - Learn how to implement secure Login and Register.
 - Experiment with JWT and use the token generated to persist data.
@@ -26,7 +26,7 @@ This project's goals were:
 
 ## Setup
 1. Create the `.env` by using `.env.example` as a reference: `cp .env.example .env`
-2. Update the `.env` file with your correct local information (username, password, database, port), plus your secret token for JWT.
+2. Update the `.env` file with your correct local information (username, password, database, port), your secret info for Cookie-Session, plus your secret token for JWT.
 3. Install dependencies: `npm i` in both `front-end` and `back-end` folders.
 4. Reset database: `npm run db:reset`
 5. `cd back-end` then `npm start` to run the Server in port 8080, and `cd front-end` to run the App in port 3000.
@@ -50,6 +50,7 @@ https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced
   - bcryptjs
   - dotenv
   - jsonwebtoken
+  - cookie-session
   - method-override
   - morgan
   - pg
