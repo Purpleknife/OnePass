@@ -19,7 +19,7 @@ export const shuffle = (characters) => {
 export const generatePassword = (shuffledCharacters, length) => {
   let output = '';
   const arr = new Uint32Array(length);
-  const random = crypto.getRandomValues(arr);
+  const random = window.crypto.getRandomValues(arr);
 
   random.map((i) => {
     output += shuffledCharacters[i % shuffledCharacters.length];
