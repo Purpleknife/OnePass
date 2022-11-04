@@ -12,7 +12,7 @@ const AddOns = (props) => {
   const titleInput = useRef();
   const emailInput = useRef();
 
-  const save = async(event) => {
+  const save = async() => {
 
     axios.post(`/dashboard/${user_id}`, {
       title: titleInput.current.value,
@@ -25,11 +25,14 @@ const AddOns = (props) => {
         titleInput.current.value = '';
         emailInput.current.value = '';
         props.setPassword('');
-        props.setLength(0);
-        props.setLowercase(false);
-        props.setUppercase(false);
-        props.setNumbers(false);
-        props.setSymbols(false);
+        props.setOptions(prev => ({
+          ...prev,
+          length: 0,
+          lowercase: false,
+          uppercase: false,
+          numbers: false,
+          symbols: false
+        }));
       })
       .catch(error => {
         console.log(error.message);
