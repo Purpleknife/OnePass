@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 import axios from 'axios';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import GeneratePass from './GeneratePass';
 import OneLogin from './OneLogin';
 import NavBar from './NavBar';
@@ -12,17 +12,13 @@ import './Dashboard.scss';
 const Dashboard = (props) => {
   const [passwords, setPasswords] = useState();
   const [passList, setPassList] = useState();
-  const [cookies, setCookie, removeCookie] = useCookies(['user']);
+  const [cookies, setCookie] = useCookies(['user']);
   const user_id = cookies.user_id;
   const loggedIn = cookies.loggedIn;
-  console.log('loggedIn', loggedIn);
-
-  
 
   const fetchDashboard = async(e) => {
     await axios.get(`/dashboard/${user_id}`)
       .then(res => {
-        console.log('Get Dashboard data', res.data);
         setPasswords(res.data);
         
       })
@@ -31,7 +27,6 @@ const Dashboard = (props) => {
       });
   };
 
-  console.log('passwords', passwords);
   
   const generatePassList = async() => {
     const loginList = await passwords.map(pass => {

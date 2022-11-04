@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 import './GeneratePass.scss';
@@ -22,7 +22,6 @@ const GeneratePass = (props) => {
   const [password, setPassword] = useState('');
   const [passwordShown, setPasswordShown] = useState(false);
   const [copied, setCopied] = useState(false);
-  //const [showPass, setShowPass] = useState(false);
   const [showError, setShowError] = useState('');
 
   //To show and hide password:
@@ -101,7 +100,6 @@ const GeneratePass = (props) => {
       const shuffledChars = shuffle(characters); //So the order of the characters added is not always the same.
       console.log('shuffled', shuffledChars);
       setPassword(generatePassword(shuffledChars, length));
-      //setShowPass(!showPass);
       setShowError('');
       setLength(0);
       setLowercaseIsChecked(false);
