@@ -44,7 +44,7 @@ https://user-images.githubusercontent.com/107894342/197369341-048c8f4c-11da-48e8
 https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced-bcf7-35a3a3c5549e.mp4
 
 
-## Dependencies
+## Built with
 - Back-end:
   - express
   - Node JS
@@ -65,3 +65,6 @@ https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced
   - SASS
   - bcryptjs
   - axios
+
+- Database
+  - PostgreSQL
