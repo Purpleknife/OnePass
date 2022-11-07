@@ -2,7 +2,7 @@
 
 OnePass is an app that helps you generate and manage passwords securely.
 
-This project's goals were:
+⭐ This project's goals were:
 - Learn how to salt/ hash passwords.
 - Learn how to generate cryptographically secure random passwords with "crypto.getRandomValues()" from the "Web Crypto API" instead of "Math.random()".
 - Learn how to store passwords securely.
