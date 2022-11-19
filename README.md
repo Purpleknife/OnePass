@@ -30,7 +30,7 @@ OnePass is an app that helps you generate and manage passwords securely.
 2. Update the `.env` file with your correct local information (username, password, database, port), your secret info for Cookie-Session, plus your secret token for JWT.
 3. Install dependencies: `npm i` in both `front-end` and `back-end` folders.
 4. Reset database: `npm run db:reset`
-5. `cd back-end` then `npm start` to run the Server in port 8080, and `cd front-end` to run the App in port 3000.
+5. `cd back-end` then `npm start` to run the Server, and `cd front-end` to run the App in port 3000.
 
 ## Final Product
 

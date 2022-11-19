@@ -8,7 +8,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieSession = require('cookie-session');
 const methodOverride = require('method-override');
-const PORT = 8080;
+const port = process.env.PORT || 8080;
 
 // Express Configuration
 app.use(morgan('dev'));
@@ -28,6 +28,6 @@ const userRoutes = require('./routes/users');
 app.use('/', userRoutes(db));
 
 
-app.listen(PORT, () => {
-  console.log(`Express is be listening on port ${PORT}!`);
+app.listen(port, () => {
+  console.log(`Express is be listening on port ${port}!`);
 });
