@@ -30,7 +30,7 @@ OnePass is an app that helps you generate and manage passwords securely.
 2. Update the `.env` file with your correct local information (username, password, database, port), your secret info for Cookie-Session, plus your secret token for JWT.
 3. Install dependencies: `npm i` in both `front-end` and `back-end` folders.
 4. Reset database: `npm run db:reset`
-5. `cd back-end` then `npm start` to run the Server, and `cd front-end` to run the App in port 3000.
+5. `cd back-end` then `npm start` to run the Server, and `cd front-end` to run the App.
 
 ## Final Product
 
@@ -45,6 +45,10 @@ https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced
 
 
 ## Built with
+
+- Database
+  - PostgreSQL
+
 - Back-end:
   - express
   - Node JS
@@ -66,5 +70,6 @@ https://user-images.githubusercontent.com/107894342/197369516-0aef639b-2cc4-4ced
   - bcryptjs
   - axios
 
-- Database
-  - PostgreSQL
+
+## Other
+The [ERD](https://github.com/Purpleknife/OnePass/blob/master/back-end/ERD%20-%20OnePass.png) is in the back-end folder.
